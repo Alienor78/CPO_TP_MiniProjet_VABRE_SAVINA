@@ -67,27 +67,8 @@ public class MiniProjet_VABRE_SAVINA {
     }
     */
    
-        ArrayList<Character> couleursDisponibles = new ArrayList<>();
-        couleursDisponibles.add('R');
-        couleursDisponibles.add('B');
-        couleursDisponibles.add('G');
-        couleursDisponibles.add('Y');
-        
-        Partie partie1 = new Partie(4,8,couleursDisponibles);
-        
-        Pion[] pionsSecretes = partie1.plateau.combinaisonSecrete.elements; // On récupère la combinaison secrète
-        
-        /*Combinaison tentativeGagnante = new Combinaison(pionsSecretes);   // Crée une combinaison identique pour gagner
-        partie1.plateau.proposerCombinaison(tentativeGagnante);
-
-        if (partie1.plateau.estVictoire()) {
-            System.out.println("Bravo ! Vous avez trouve la combinaison secrete !");
-        } else {
-            System.out.println("Échec : la combinaison n'est pas correcte.");
-        } */
-        
-        partie1.LancerPartie();
-        
-        
+       
+    Partie partie1 = new Partie();
+    partie1.LancerPartie();  
 }
 }
