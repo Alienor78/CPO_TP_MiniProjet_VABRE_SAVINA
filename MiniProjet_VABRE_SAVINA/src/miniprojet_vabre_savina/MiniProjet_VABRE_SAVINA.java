@@ -89,7 +89,5 @@ public class MiniProjet_VABRE_SAVINA {
         partie1.LancerPartie();
         
         
-  
-        
 }
 }
