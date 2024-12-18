@@ -26,14 +26,18 @@ public class Combinaison {
     }
         
     public static Combinaison genereAleatoire(int taille, ArrayList<Character>couleursDisponibles){
-        Random random = new Random();
-        Pion [] elements = new Pion[taille];
-        
-        for(int i = 0; i<taille; i++){
-            char couleur = couleursDisponibles.get(random.nextInt(couleursDisponibles.size()));
-            elements[i] = new Pion(couleur);
-        }
-        return new Combinaison(elements);
+        if (couleursDisponibles.isEmpty()) {
+        throw new IllegalArgumentException("La liste des couleurs disponibles ne peut pas être vide !");
+    }
+
+    Random random = new Random();
+    Pion[] elements = new Pion[taille];
+
+    for (int i = 0; i < taille; i++) {
+        char couleur = couleursDisponibles.get(random.nextInt(couleursDisponibles.size()));
+        elements[i] = new Pion(couleur);
+    }
+    return new Combinaison(elements);
     }
     
     public int[] comparer(Combinaison autre){

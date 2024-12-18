@@ -19,25 +19,61 @@ public class Partie {
     ArrayList<Character> couleursDisponibles;
     int nbToursMax;
     int tailleCombinaison;
-    /* Pion[][] matPions = new Pion[8][4];  => ?????????*/
     
     
-    public Partie(int tailleCombinaison, int nbToursMax, ArrayList<Character> couleursDisponibles){
-        this.couleursDisponibles = couleursDisponibles;
+    
+    public Partie(){
+        Scanner sc = new Scanner(System.in);
+
+        // Étape 1 : Choisir le nombre de couleurs disponibles
+        System.out.println("Combien de couleurs souhaitez-vous utiliser ? (min : 2, max : 10)");
+        int nbCouleurs;
+        while (true) {
+            nbCouleurs = sc.nextInt();
+            if (nbCouleurs >= 2 && nbCouleurs <= 10) break;
+            System.out.println("Veuillez entrer un nombre entre 2 et 10.");
+        }
+
+        // Générer les couleurs disponibles automatiquement
+        this.couleursDisponibles = new ArrayList<>();
+        for (int i = 0; i < nbCouleurs; i++) {
+            this.couleursDisponibles.add((char) ('A' + i)); // Couleurs : A, B, C, ...
+        }
+
+        // Étape 2 : Choisir la taille de la combinaison
+        System.out.println("Quelle taille de combinaison souhaitez-vous ? (min : 1, max : 10)");
+        while (true) {
+            tailleCombinaison = sc.nextInt();
+            if (tailleCombinaison >= 1 && tailleCombinaison <= 10) break;
+            System.out.println("Veuillez entrer une taille entre 1 et 10.");
+        }
+
+        // Étape 3 : Choisir le nombre maximum de tours
+        System.out.println("Combien de tours maximum souhaitez-vous ? (min : 1, max : 20)");
+        while (true) {
+            nbToursMax = sc.nextInt();
+            if (nbToursMax >= 1 && nbToursMax <= 20) break;
+            System.out.println("Veuillez entrer un nombre entre 1 et 20.");
+        }
+
+        // Générer la combinaison secrète
         Combinaison combinaisonSecrete = Combinaison.genereAleatoire(tailleCombinaison, couleursDisponibles);
+
+        // Initialiser le plateau
         this.plateau = new PlateauDeJeu(combinaisonSecrete, nbToursMax);
-        this.nbToursMax = nbToursMax;
-        this.tailleCombinaison = tailleCombinaison;
     }
     
      public void afficherRegles() {
-        System.out.println("Bienvenu sur le jeu du Mastermind:");
-        System.out.println("Vous devez deviner une combinaison secrète composée de couleurs.");
-        System.out.println("Chaque tentative doit être composée de la même taille que la combinaison secrète.");
-        System.out.println("Pour chaque tentative, le système vous donnera des indices :");
-        System.out.println("- Un pion noir signifie que la couleur est bien placée.");
-        System.out.println("- Un pion blanc signifie que la couleur est présente mais mal placée.");
-        System.out.println("Vous avez un nombre limité de tours pour trouver la bonne combinaison.");
+        System.out.println("Bienvenue dans le jeu du Mastermind !");
+        System.out.println("Paramètres de cette partie :");
+        System.out.println("- Taille de la combinaison : " + tailleCombinaison);
+        System.out.println("- Nombre de couleurs disponibles : " + couleursDisponibles.size());
+        System.out.println("- Couleurs disponibles : " + couleursDisponibles);
+        System.out.println("- Nombre de tours maximum : " + nbToursMax);
+        System.out.println("\nRègles :");
+        System.out.println("- Devinez la combinaison secrète.");
+        System.out.println("- Un pion noir : bien placé.");
+        System.out.println("- Un pion blanc : mal placé, mais présent.");
     }
     
      private Combinaison creerCombinaisonDepuisEntree(String entree) {
@@ -63,16 +99,6 @@ public class Partie {
          Scanner sc = new Scanner(System.in);
          int tour = 1;
         
-         
-        /* while (tour <= plateau.nbToursMax &&){
-             plateau.afficherPlateau();
-            
-             System.out.println("Tour : " + tour + ", proposer une combinaison : ");
-             combinaison  = sc.nextLine();
-             
-             for (int i = 0; i < entree.length() ; i++){
-                 
-             } */
         
         while (!plateau.estVictoire() && !plateau.estDefaite()) {
         // Afficher le plateau
