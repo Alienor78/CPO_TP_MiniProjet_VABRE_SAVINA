@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class MasterMind extends JFrame {
 
-    private Color[] couleurs = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
+    private Color[] couleurs = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.MAGENTA, Color.WHITE};
     private Map<Color, Integer> couleurToNumero = new HashMap<>();
     private JButton btnValider;
 
@@ -61,7 +61,7 @@ public class MasterMind extends JFrame {
     String message = "Bienvenue dans MasterMind !\n\n"
             + "Règles du jeu :\n"
             + "1. Le but du jeu est de trouver la combinaison secrète composée de 4 couleurs.\n"
-            + "2. À chaque tour, propose une combinaison en changeant les couleurs des boutons.\n"
+            + "2. À chaque tour, propose une combinaison en changeant les couleurs des boutons, vous avez 6 couleurs possibles.\n"
             + "3. Après avoir validé, des indices apparaîtront :\n"
             + "   - Noir : une couleur est bien placée.\n"
             + "   - Blanc : une couleur est correcte mais mal placée.\n"
