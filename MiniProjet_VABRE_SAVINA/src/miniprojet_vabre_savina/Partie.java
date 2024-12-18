@@ -138,7 +138,7 @@ public class Partie {
             System.out.println("Vous avez reussi en " + tour + " sur " + nbToursMax + " tours maximum.");
             break;
         } else if (plateau.estDefaite()) {
-            System.out.println("Dommage, vous avez perdu... La combinaison secrete était : " + plateau.combinaisonSecrete);
+            System.out.println("Dommage, vous avez perdu... La combinaison secrete etait : " + plateau.combinaisonSecrete);
             break;
         }
 
