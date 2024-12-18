@@ -114,7 +114,7 @@ public class Partie {
         // Demander une tentative valide
         Combinaison tentative = null;
         while (tentative == null) {
-            System.out.println("Tour " + tour + " : Proposez une combinaison (par exemple: 'RGBY'):");
+            System.out.println("Tour " + tour + " : Proposez une combinaison (par exemple: 'ABCD...') dans les couleurs disponibles suivantes :" + couleursDisponibles);
             String entree = sc.nextLine().toUpperCase();
 
             if (entree.length() != plateau.combinaisonSecrete.taille) {
